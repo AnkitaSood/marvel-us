@@ -1,4 +1,11 @@
-<header>Header</header>
+<header>
+  <nav class="main-nav">
+  <ul class="main-menu">
+    <li><a [routerLink]="'comics'">Comics Series</a></li>
+    <li><a [routerLink]="'characters'">Characters</a></li>
+    <li><a [routerLink]="'creators'">Creators</a></li>
+  </ul>
+</nav></header>
 <main>
   <router-outlet></router-outlet>
 <!--  <router-outlet name="details"></router-outlet>-->
