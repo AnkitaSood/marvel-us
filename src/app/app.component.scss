@@ -1,7 +1,7 @@
 :host {
   display: block;
 
-  .main-menu {
+  /*.main-menu {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -25,5 +25,62 @@
         background-color: rgba(0, 0, 0, 0.4);
       }
     }
+  }*/
+}
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Apply Marvel theme styles */
+.header {
+  background-color: #ed1d24;
+  color: #fff;
+  padding: 10px;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav__links {
+  list-style: none;
+  display: flex;
+}
+
+.nav__links li {
+  margin: 0 10px;
+}
+
+.nav__links li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav__links li a:hover {
+  color: #ffc107; /* Change the hover color as desired */
+}
+
+/* Media query for responsive design */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+  }
+
+  .nav__links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav__links li {
+    margin: 10px 0;
   }
 }
+

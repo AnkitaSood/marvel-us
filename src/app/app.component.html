@@ -1,13 +1,27 @@
-<header>
-  <nav class="main-nav">
-  <ul class="main-menu">
-    <li><a [routerLink]="'comics'">Comics Series</a></li>
-    <li><a [routerLink]="'characters'">Characters</a></li>
-    <li><a [routerLink]="'creators'">Creators</a></li>
-  </ul>
-</nav></header>
-<main>
+<!--<header>-->
+<!--  <nav class="main-nav">-->
+<!--  <ul class="main-menu">-->
+<!--    <li><a [routerLink]="'comics'">Comics Series</a></li>-->
+<!--    <li><a [routerLink]="'characters'">Characters</a></li>-->
+<!--    <li><a [routerLink]="'creators'">Creators</a></li>-->
+<!--  </ul>-->
+<!--</nav></header>-->
+<!--<main>-->
+<!--  <router-outlet></router-outlet>-->
+<!--&lt;!&ndash;  <router-outlet name="details"></router-outlet>&ndash;&gt;-->
+<!--</main>-->
+<!--<footer>Footer</footer>-->
+<header class="header">
+  <nav class="nav">
+    <ul class="nav__links">
+      <li><a [routerLink]="'comics'">Comics Series</a></li>
+      <li><a [routerLink]="'characters'">Characters</a></li>
+      <li><a [routerLink]="'creators'">Creators</a></li>
+    </ul>
+  </nav>
+</header>
+<main>-->
   <router-outlet></router-outlet>
-<!--  <router-outlet name="details"></router-outlet>-->
+  <!--  <router-outlet name="details"></router-outlet>-->
 </main>
-<footer>Footer</footer>
+  <footer>Footer</footer>

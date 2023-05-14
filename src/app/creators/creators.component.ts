@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {MarvelService} from "../store/marvel.service";
 
 @Component({
   selector: 'app-creators',
@@ -8,6 +9,11 @@ import { CommonModule } from '@angular/common';
   templateUrl: './creators.component.html',
   styleUrls: ['./creators.component.scss']
 })
-export class CreatorsComponent {
+export class CreatorsComponent implements OnInit {
+  constructor(private readonly marvelService: MarvelService) {
+  }
 
+  ngOnInit(): void {
+    this.marvelService.getCreators();
+  }
 }
