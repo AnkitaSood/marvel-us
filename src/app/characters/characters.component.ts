@@ -1,19 +1,22 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MarvelService} from "../store/marvel.service";
+import {CardComponent} from "../shared/card/card.component";
+import {CharacterResponse} from "./characters.model";
+import {toSignal} from "@angular/core/rxjs-interop";
 
 @Component({
   selector: 'app-characters',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CardComponent],
   templateUrl: './characters.component.html',
-  styleUrls: ['./characters.component.scss']
+  styleUrls: ['./characters.component.scss'],
+  host: {class:'layout-cards'}
 })
-export class CharactersComponent implements OnInit {
-  constructor(private readonly marvelService: MarvelService) {
-  }
+export class CharactersComponent  {
 
-  ngOnInit(): void {
-    this.marvelService.getCharacters();
-  }
+  marvelService = inject(MarvelService);
+  characters  = toSignal<CharacterResponse>(this.marvelService.getCharacters());
+
+  constructor() {}
 }

@@ -1,1 +1,10 @@
-<p>characters-list works!</p>
+<ng-container *ngFor="let character of characters()?.results">
+    <app-card [image]="character.thumbnail.path + '.' + character.thumbnail.extension">
+        <ng-container name>
+            {{character.name}}
+        </ng-container>
+        <ng-container description>
+            {{character.description === "" ? "Number of comics available: " + character.comics.available : character.description}}
+        </ng-container>
+    </app-card>
+</ng-container>

@@ -1,56 +1,46 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 @Component({
-  selector: 'app-card',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
-    <div class="card-container">
-      <div class="card">
-        <img src="http://via.placeholder.com/640x360" alt="Image 1">
-        <h3>Card 1</h3>
-        <p>Description 1</p>
-      </div>
-    </div>
-  `,
-  styles: [
-    `
-      :host {
-        display: block;
-        .card-container {
-          display: flex;
-          justify-content: space-between;
-          flex-wrap: wrap;
-        }
+    selector: 'app-card',
+    standalone: true,
+    imports: [CommonModule],
+    template: `
+        <img [src]="image" alt="main photo">
+        <h3>
+            <ng-content select="[name]"></ng-content>
+        </h3>
+        <p>
+            <ng-content select="[description]"></ng-content>
+        </p>
+    `,
+    styles: [
+        `
+          @use 'tokens' as *;
+          
+          :host {
+            display: block;
+            width: $size-card-width;
+            padding: $spacing-50;
+            border: $size-border-1px dotted aliceblue;
 
-        .card {
-          width: 300px;
-          padding: 20px;
-          border: 1px solid aliceblue;
-          margin-bottom: 20px;
-        }
 
-        .card img {
-          width: 100%;
-          height: auto;
-          margin-bottom: 10px;
-        }
+            img {
+              width: 100%;
+              height: auto;
+              object-fit: contain;
+            }
 
-        .card h3 {
-          font-size: 18px;
-          margin-bottom: 10px;
-        }
+            h3 {
+              font-size: $font-header-card;
+              margin-bottom:$spacing-50;
+            }
 
-        .card p {
-          font-size: 14px;
-        }
-
-      }
-    `
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+          }
+        `
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardComponent {
-
+    @Input({required: true}) image: string ='';
 }

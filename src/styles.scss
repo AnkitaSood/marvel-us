@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+@use "tokens" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: $color-text-primary;
+  font-size: $font-base;
+}
+
+main {
+  height: 100%;
+  padding: $spacing-100;
+}
+
+.layout-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-100;
+}

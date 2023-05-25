@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MarvelService} from "../store/marvel.service";
+import {CardComponent} from "../shared/card/card.component";
 
 @Component({
   selector: 'app-creators',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CardComponent],
   templateUrl: './creators.component.html',
   styleUrls: ['./creators.component.scss']
 })
