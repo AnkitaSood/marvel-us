@@ -27,7 +27,7 @@ import {CommonModule} from '@angular/common';
 
             img {
               width: 100%;
-              height: auto;
+              height: $size-card-img-height;
               object-fit: contain;
             }
 

@@ -18,5 +18,6 @@ main {
 .layout-cards {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: $spacing-100;
 }

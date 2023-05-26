@@ -13,7 +13,7 @@ export class MarvelService {
   constructor() { }
 
   getCharacters(): Observable<CharacterResponse> {
-    const url = `${this.API_BASE_URL}/characters?modifiedSince=2020-01-01T00%3A00%3A00-0000&orderBy=name%2Cmodified&limit=10&apikey=${this.API_PUBLIC_KEY}`;
+    const url = `${this.API_BASE_URL}/characters?modifiedSince=2020-01-01T00%3A00%3A00-0000&orderBy=name%2Cmodified&limit=16&apikey=${this.API_PUBLIC_KEY}`;
      return new Observable((observer) => {
          fetch(url)
              .then(response => response.json())
