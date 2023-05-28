@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-card',
@@ -13,16 +14,17 @@ import {CommonModule} from '@angular/common';
         <p>
             <ng-content select="[description]"></ng-content>
         </p>
+        <button type="button" (click)="openFavPanel()">Add to Favorites</button>
     `,
     styles: [
         `
           @use 'tokens' as *;
-          
+
           :host {
             display: block;
             width: $size-card-width;
             padding: $spacing-50;
-            border: $size-border-1px dotted aliceblue;
+            border: $size-border-1px dotted $color-card-border;
 
 
             img {
@@ -33,7 +35,7 @@ import {CommonModule} from '@angular/common';
 
             h3 {
               font-size: $font-header-card;
-              margin-bottom:$spacing-50;
+              margin-bottom: $spacing-50;
             }
 
           }
@@ -42,5 +44,12 @@ import {CommonModule} from '@angular/common';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardComponent {
-    @Input({required: true}) image: string ='';
+    @Input({required: true}) image: string = '';
+
+
+    constructor(private readonly router: Router) {}
+
+    openFavPanel() {
+        this.router.navigate([{outlets: {favorites: ['my-favorites']}}]);
+    }
 }
