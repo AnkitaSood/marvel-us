@@ -11,7 +11,6 @@ import {toSignal} from "@angular/core/rxjs-interop";
   imports: [CommonModule, CardComponent],
   templateUrl: './characters.component.html',
   styleUrls: ['./characters.component.scss'],
-  host: {class:'layout-cards'}
 })
 export class CharactersComponent  {
 

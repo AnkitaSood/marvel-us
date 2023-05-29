@@ -1,1 +1,6 @@
-<!--<app-card></app-card>-->
+<app-card [response]="comics()?.results">
+    <ng-template #header let-comic>{{comic.title}}</ng-template>
+    <ng-template #body
+                 let-comic>{{comic.description}}
+    </ng-template>
+</app-card>

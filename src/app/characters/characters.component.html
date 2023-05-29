@@ -1,10 +1,7 @@
-<ng-container *ngFor="let character of characters()?.results">
-    <app-card [image]="character.thumbnail.path + '.' + character.thumbnail.extension">
-        <ng-container name>
-            {{character.name}}
-        </ng-container>
-        <ng-container description>
-            {{character.description === "" ? "Number of comics available: " + character.comics.available : character.description}}
-        </ng-container>
-    </app-card>
-</ng-container>
+<app-card [response]="characters()?.results">
+    <ng-template #header let-character>{{character.name}}</ng-template>
+    <ng-template #body
+                 let-character>{{character.description === "" ? "Number of comics available: " + character.comics.available : character.description}}
+    </ng-template>
+</app-card>
+

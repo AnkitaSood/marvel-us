@@ -14,10 +14,9 @@ export type Character = {
     comics: {
         available: number;
     }
-    // Include other properties as needed
 }
 
-export type Thumbnail = {
+type Thumbnail = {
     path: string;
     extension: string;
 }
