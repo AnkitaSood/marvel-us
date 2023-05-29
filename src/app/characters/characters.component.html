@@ -1,3 +1,4 @@
+<h1 class="page-title">Total characters in MCU: {{characters()?.total}}.</h1>
 <app-card [response]="characters()?.results">
     <ng-template #header let-character>{{character.name}}</ng-template>
     <ng-template #body

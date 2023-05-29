@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {Router} from "@angular/router";
 import {Comic} from "../../comics/comics.model";
 import {Character} from "../../characters/characters.model";
+import {Creator} from "../../creators/creators.model";
 
 @Component({
     selector: 'app-card',
@@ -20,10 +21,10 @@ import {Character} from "../../characters/characters.model";
                 <ng-container *ngTemplateOutlet="body || defaultBodyTmpl; context: {$implicit: data}"></ng-container>
             </p>
 
-            <button type="button" (click)="openFavPanel()">Add to Favorites</button>
+            <button type="button" (click)="openFavPanel(data.id)">Add to Favorites</button>
         </article>
-        <ng-template #defaultHeaderTmpl>/Header content doesn't exist.</ng-template>
-        <ng-template #defaultBodyTmpl>Body content doesn't exist.</ng-template>
+        <ng-template #defaultHeaderTmpl>Header content not available.</ng-template>
+        <ng-template #defaultBodyTmpl>Body content not available.</ng-template>
     `,
     styles: [
         `
@@ -64,7 +65,7 @@ import {Character} from "../../characters/characters.model";
 })
 
 export class CardComponent {
-    @Input({required: true}) response:  Character[] | Comic[] | undefined;
+    @Input({required: true}) response:  Character[] | Comic[] | Creator[] | undefined;
     @ContentChild('header') header: TemplateRef<any> | undefined;
     @ContentChild('body') body: TemplateRef<any> | undefined;
 
@@ -72,7 +73,8 @@ export class CardComponent {
     constructor(private readonly router: Router) {
     }
 
-    openFavPanel() {
-        this.router.navigate([{outlets: {favorites: ['my-favorites']}}]);
+    openFavPanel(id: number) {
+        console.log(id);
+        this.router.navigate([{outlets: {favorites: ['my-favorites']}}], {skipLocationChange: true});
     }
 }

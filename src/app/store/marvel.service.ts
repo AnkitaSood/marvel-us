@@ -3,6 +3,7 @@ import {appConfig} from "../../config";
 import {Observable} from "rxjs";
 import {CharacterResponse} from "../characters/characters.model";
 import {ComicsResponse} from "../comics/comics.model";
+import {CreatorResponse} from "../creators/creators.model";
 
 @Injectable({
     providedIn: 'root'
@@ -46,8 +47,8 @@ export class MarvelService {
         })
     }
 
-    getCreators(): Observable<any> {
-        const url = `${this.API_BASE_URL}/creators?apikey=${this.API_PUBLIC_KEY}`;
+    getCreators(): Observable<CreatorResponse> {
+        const url = `${this.API_BASE_URL}/creators?limit=16&apikey=${this.API_PUBLIC_KEY}`;
 
         return new Observable((observer) => {
             fetch(url)

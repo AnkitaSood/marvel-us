@@ -1,3 +1,5 @@
+import {Thumbnail} from "../shared/models/common.model";
+
 export type ComicsResponse = {
     offset: number;
     limit: number;
@@ -28,9 +30,4 @@ export type Comic = {
             }
         ],
     }
-}
-
-type Thumbnail = {
-    path: string;
-    extension: string;
 }

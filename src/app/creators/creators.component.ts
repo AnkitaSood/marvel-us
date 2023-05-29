@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MarvelService} from "../store/marvel.service";
 import {CardComponent} from "../shared/card/card.component";
+import {toSignal} from "@angular/core/rxjs-interop";
+import {CreatorResponse} from "./creators.model";
 
 @Component({
   selector: 'app-creators',
@@ -10,11 +12,8 @@ import {CardComponent} from "../shared/card/card.component";
   templateUrl: './creators.component.html',
   styleUrls: ['./creators.component.scss']
 })
-export class CreatorsComponent implements OnInit {
-  constructor(private readonly marvelService: MarvelService) {
-  }
+export class CreatorsComponent {
+  marvelService = inject(MarvelService);
+  creators = toSignal<CreatorResponse>(this.marvelService.getCreators());
 
-  ngOnInit(): void {
-    this.marvelService.getCreators();
-  }
 }

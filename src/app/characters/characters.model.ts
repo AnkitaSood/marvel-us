@@ -1,3 +1,5 @@
+import {Thumbnail} from "../shared/models/common.model";
+
 export type CharacterResponse = {
     offset: number;
     limit: number;
@@ -14,9 +16,4 @@ export type Character = {
     comics: {
         available: number;
     }
-}
-
-type Thumbnail = {
-    path: string;
-    extension: string;
 }
