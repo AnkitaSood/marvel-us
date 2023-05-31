@@ -1,30 +1,38 @@
-import {ChangeDetectionStrategy, Component, ContentChild, Input, NgIterable, TemplateRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ContentChild, inject, Input, NgIterable, TemplateRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Router} from "@angular/router";
 import {Comic} from "../../comics/comics.model";
 import {Character} from "../../characters/characters.model";
 import {Creator} from "../../creators/creators.model";
+import {FavoritesService} from "../../store/favorites.service";
+import {ResponseHeadingPipe} from "../pipes/response-heading.pipe";
 
 @Component({
     selector: 'app-card',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, ResponseHeadingPipe],
     host: {class: 'layout-cards'},
     template: `
-        <article class="card" *ngFor="let data  of response">
-            <img class="thumbnail" [src]="data.thumbnail.path + '.' + data.thumbnail.extension" alt="thumbnail">
-            <h3 class="card-title">
-                <ng-container
-                        *ngTemplateOutlet="header || defaultHeaderTmpl; context: {$implicit: data}"></ng-container>
-            </h3>
-            <p class="card-body">
-                <ng-container *ngTemplateOutlet="body || defaultBodyTmpl; context: {$implicit: data}"></ng-container>
-            </p>
-
-            <button type="button" (click)="openFavPanel(data.id)">Add to Favorites</button>
-        </article>
+        <ng-container *ngIf="response">
+            <article class="card" *ngFor="let data  of response">
+                <img class="thumbnail" [src]="data.thumbnail.path + '.' + data.thumbnail.extension" alt="thumbnail">
+                <h3 class="card-title">
+                    <ng-container
+                            *ngTemplateOutlet="header || defaultHeaderTmpl; context: {$implicit: data}"></ng-container>
+                </h3>
+                <p class="card-body">
+                    <ng-container
+                            *ngTemplateOutlet="body || defaultBodyTmpl; context: {$implicit: data}"></ng-container>
+                </p>
+                <ng-container *ngIf="(data | responseHeading) as name">
+                    <button type="button" (click)="openFavPanel(name)">Add to Favorites
+                    </button>
+                </ng-container>
+            </article>
+        </ng-container>
         <ng-template #defaultHeaderTmpl>Header content not available.</ng-template>
         <ng-template #defaultBodyTmpl>Body content not available.</ng-template>
+
     `,
     styles: [
         `
@@ -65,16 +73,15 @@ import {Creator} from "../../creators/creators.model";
 })
 
 export class CardComponent {
-    @Input({required: true}) response:  Character[] | Comic[] | Creator[] | undefined;
+    @Input({required: true}) response: Character[] | Comic[] | Creator[] | undefined;
     @ContentChild('header') header: TemplateRef<any> | undefined;
     @ContentChild('body') body: TemplateRef<any> | undefined;
-
-
+    favoriteService = inject(FavoritesService);
     constructor(private readonly router: Router) {
     }
 
-    openFavPanel(id: number) {
-        console.log(id);
+    openFavPanel(name: string) {
+        this.favoriteService.updateFavorites(name);
         this.router.navigate([{outlets: {favorites: ['my-favorites']}}], {skipLocationChange: true});
     }
 }

@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {appConfig} from "../../config";
 import {Observable} from "rxjs";
-import {CharacterResponse} from "../characters/characters.model";
-import {ComicsResponse} from "../comics/comics.model";
-import {CreatorResponse} from "../creators/creators.model";
+import {Character, CharacterResponse} from "../characters/characters.model";
+import {Comic, ComicsResponse} from "../comics/comics.model";
+import {Creator, CreatorResponse} from "../creators/creators.model";
 
 @Injectable({
     providedIn: 'root'
@@ -12,7 +12,8 @@ export class MarvelService {
     private readonly API_PUBLIC_KEY = appConfig.apikey;
     private readonly API_BASE_URL = appConfig.base;
 
-  constructor() { }
+    constructor() {
+    }
 
     getCharacters(): Observable<CharacterResponse> {
         const url = `${this.API_BASE_URL}/characters?modifiedSince=2020-01-01T00%3A00%3A00-0000&orderBy=name%2Cmodified&limit=16&apikey=${this.API_PUBLIC_KEY}`;
@@ -20,7 +21,8 @@ export class MarvelService {
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    observer.next(data.data);
+                    const characterData: CharacterResponse = {...data.data, type: "characters"}
+                    observer.next(characterData);
                     observer.complete();
                 })
                 .catch(error => {
@@ -63,4 +65,21 @@ export class MarvelService {
                 })
         })
     }
+
+/*    getDetatils(type: string, id: number): Observable<Character | Comic | Creator> {
+        const url = `${this.API_BASE_URL}/${type}/${id}?apiKey=${this.API_PUBLIC_KEY}`;
+
+        return new Observable((observer) => {
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    observer.next(data.data.results);
+                    observer.complete()
+                })
+                .catch(error => {
+                    console.log("Error displaying details", error);
+                    throw error;
+                })
+        })
+    }*/
 }

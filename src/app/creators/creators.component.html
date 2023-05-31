@@ -1,4 +1,4 @@
-<h1 class="page-title">Total creators associated with MCU: {{creators()?.total}}. </h1>
+<h1 class="page-title">Total creators associated with MCU: {{creators()?.total| number : '':'en'}}. </h1>
 <app-card [response]="creators()?.results">
     <ng-template #header let-creator>{{creator.fullName}}</ng-template>
     <ng-template #body let-creator>

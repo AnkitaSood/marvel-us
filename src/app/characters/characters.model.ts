@@ -5,6 +5,7 @@ export type CharacterResponse = {
     limit: number;
     total: number;
     count: number;
+    type:string;
     results: Character[];
 }
 

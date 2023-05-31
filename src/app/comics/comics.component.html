@@ -1,4 +1,4 @@
-<h1 class="page-title"> Total Comics in MCU: {{comics()?.total}}.</h1>
+<h1 class="page-title"> Total Comics in MCU: {{comics()?.total | number : '':'en'}}.</h1>
 <app-card [response]="comics()?.results">
     <ng-template #header let-comic>{{comic.title}}</ng-template>
     <ng-template #body

@@ -3,6 +3,7 @@ import {CharactersComponent} from "./app/characters/characters.component";
 import {ComicsComponent} from "./app/comics/comics.component";
 import {CreatorsComponent} from "./app/creators/creators.component";
 import {FavoritesPanelComponent} from "./app/shared/favorites-panel/favorites-panel.component";
+import {DetailsSlideoutComponent} from "./app/shared/details-slideout/details-slideout.component";
 
 export const routes: Route[] = [
     {
@@ -21,6 +22,11 @@ export const routes: Route[] = [
         path: 'my-favorites',
         outlet: 'favorites',
         loadComponent: () => import('./app/shared/favorites-panel/favorites-panel.component').then(m => FavoritesPanelComponent)
+    },
+    {
+        path: 'details/:type/:id',
+        outlet: 'details',
+        loadComponent: () => import('./app/shared/details-slideout/details-slideout.component').then(m => DetailsSlideoutComponent)
     },
     {path: '', pathMatch: 'full', redirectTo: 'characters'},
     {path: '**', redirectTo: '/characters'},
