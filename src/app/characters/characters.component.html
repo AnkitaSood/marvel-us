@@ -1,7 +1,7 @@
-<h1 class="page-title">Total characters in MCU modified since 2020: {{characters()?.total | number : '':'en'}}.</h1>
+<h1 class="page-title">Total characters in MCU modified since 2010: {{characters()?.total | number : '':'en'}}.</h1>
 <app-card [response]="characters()?.results">
     <ng-template #header let-character>
-        <a [routerLink]="['/',{outlets: {details: 'details'}}]">{{character.name}}</a>
+        <a [routerLink]="['/',{outlets: {details: ['details', 'characters', character.id]}}]">{{character.name}}</a>
     </ng-template>
     <ng-template #body
                  let-character>{{character.description === "" ? "Number of comics available: " + character.comics.available : character.description}}

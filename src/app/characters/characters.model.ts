@@ -16,5 +16,9 @@ export type Character = {
     thumbnail: Thumbnail;
     comics: {
         available: number;
-    }
+    };
+    urls: {
+        type: string;
+        url: string;
+    }[];
 }

@@ -16,7 +16,7 @@ export type Creator = {
     suffix?: string;
     fullName: string;
     modified: string; // Date string in ISO 8601 format
-    thumbnail?: Thumbnail
+    thumbnail?: Thumbnail;
     comics?: {
         available: number;
         collectionURI: string;

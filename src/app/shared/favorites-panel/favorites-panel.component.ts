@@ -26,7 +26,7 @@ import {FavoritesService} from "../../store/favorites.service";
 
           :host {
             padding: $spacing-100;
-            background-color: deeppink;
+            background-color: rgba(230, 36, 41, 0.7);
             flex: 1 0 50%;
 
             .panel-header {

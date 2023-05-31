@@ -1,0 +1,38 @@
+@use 'tokens' as *;
+
+:host {
+  display: block;
+  height: 30vh;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: $spacing-100;
+  background-color: rgba(230, 36, 41, 0.8);
+  transition: transform 0.3s ease-out;
+
+  &.slide-in {
+
+  }
+
+  .slide-out--header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacing-100;
+  }
+
+  .slide-out--content {
+    display: flex;
+    justify-content: space-between;
+
+    img {
+      width: 300px;
+    }
+  }
+
+  .slide-out--info {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-50;
+  }
+}

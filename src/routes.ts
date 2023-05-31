@@ -1,9 +1,9 @@
-import {Route} from "@angular/router";
+import {Route, withComponentInputBinding} from "@angular/router";
 import {CharactersComponent} from "./app/characters/characters.component";
 import {ComicsComponent} from "./app/comics/comics.component";
 import {CreatorsComponent} from "./app/creators/creators.component";
 import {FavoritesPanelComponent} from "./app/shared/favorites-panel/favorites-panel.component";
-import {DetailsSlideoutComponent} from "./app/shared/details-slideout/details-slideout.component";
+import {DetailsSlideOutComponent} from "./app/shared/details-slideout/details-slide-out.component";
 
 export const routes: Route[] = [
     {
@@ -26,7 +26,7 @@ export const routes: Route[] = [
     {
         path: 'details/:type/:id',
         outlet: 'details',
-        loadComponent: () => import('./app/shared/details-slideout/details-slideout.component').then(m => DetailsSlideoutComponent)
+        loadComponent: () => import('./app/shared/details-slideout/details-slide-out.component').then(m => DetailsSlideOutComponent)
     },
     {path: '', pathMatch: 'full', redirectTo: 'characters'},
     {path: '**', redirectTo: '/characters'},

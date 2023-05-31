@@ -12,6 +12,7 @@ export type Comic = {
     id: number;
     title: string;
     description: string;
+    format: string;
     prices: [
         {
             type: string,
@@ -29,5 +30,15 @@ export type Comic = {
                 role: string;
             }
         ],
-    }
+    };
+    characters: {
+        available: number
+    };
+    stories: {
+        available: number;
+    };
+    urls: {
+        type: string;
+        url: string;
+    }[];
 }

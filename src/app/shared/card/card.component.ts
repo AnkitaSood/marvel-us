@@ -25,7 +25,7 @@ import {ResponseHeadingPipe} from "../pipes/response-heading.pipe";
                             *ngTemplateOutlet="body || defaultBodyTmpl; context: {$implicit: data}"></ng-container>
                 </p>
                 <ng-container *ngIf="(data | responseHeading) as name">
-                    <button type="button" (click)="openFavPanel(name)">Add to Favorites
+                    <button type="button" class="button" (click)="openFavPanel(name)">Add to Favorites
                     </button>
                 </ng-container>
             </article>
@@ -65,8 +65,16 @@ import {ResponseHeadingPipe} from "../pipes/response-heading.pipe";
               font-size: $font-header-card;
               margin-bottom: $spacing-50;
             }
+            
+            .card-body {
+              -webkit-line-clamp: 3;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              font-size: $font-base;
+              overflow: hidden;
+              margin-bottom: $spacing-50;
+            }
           }
-
         `
     ],
     changeDetection: ChangeDetectionStrategy.OnPush

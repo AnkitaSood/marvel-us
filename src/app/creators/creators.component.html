@@ -1,9 +1,12 @@
 <h1 class="page-title">Total creators associated with MCU: {{creators()?.total| number : '':'en'}}. </h1>
 <app-card [response]="creators()?.results">
-    <ng-template #header let-creator>{{creator.fullName}}</ng-template>
+    <ng-template #header let-creator>
+        <a class='card-link'
+           [routerLink]="['/',{outlets: {details: ['details', 'creators', creator.id]}}]"> {{creator.fullName}}</a>
+    </ng-template>
     <ng-template #body let-creator>
-<p *ngFor="let comic of creator.comics.items.slice(0,3)">
-    Comic: {{comic.name}}
-</p>
+        <p *ngFor="let comic of creator.comics.items.slice(0,3)">
+            Comic: {{comic.name}}
+        </p>
     </ng-template>
 </app-card>

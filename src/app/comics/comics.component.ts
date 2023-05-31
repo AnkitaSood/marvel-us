@@ -4,11 +4,12 @@ import {MarvelService} from "../store/marvel.service";
 import {CardComponent} from "../shared/card/card.component";
 import {toSignal} from "@angular/core/rxjs-interop";
 import {ComicsResponse} from "./comics.model";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-comics',
   standalone: true,
-  imports: [CommonModule, CardComponent],
+  imports: [CommonModule, CardComponent, RouterLink],
   templateUrl: './comics.component.html',
   styleUrls: ['./comics.component.scss'],
 })
