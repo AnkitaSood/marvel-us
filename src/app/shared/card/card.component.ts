@@ -25,7 +25,7 @@ import {ResponseHeadingPipe} from "../pipes/response-heading.pipe";
                             *ngTemplateOutlet="body || defaultBodyTmpl; context: {$implicit: data}"></ng-container>
                 </p>
                 <ng-container *ngIf="(data | responseHeading) as name">
-                    <button type="button" class="button" (click)="openFavPanel(name)">Add to Favorites
+                    <button type="button" class="button card-btn" (click)="openFavPanel(name)">Add to Favorites
                     </button>
                 </ng-container>
             </article>
@@ -43,16 +43,18 @@ import {ResponseHeadingPipe} from "../pipes/response-heading.pipe";
             &.layout-cards {
               display: flex;
               flex-wrap: wrap;
-              justify-content: center;
+              justify-content: flex-start;
               gap: $spacing-100;
               padding: $spacing-100;
             }
 
             .card {
-              display: block;
+              display: flex;
+              flex-direction: column;
+              gap: $spacing-50;
               width: $size-card-width;
-              padding: $spacing-50;
-              border: $size-border-1px dotted $color-card-border;
+              padding: $spacing-100;
+              background-color: $color-card-background;
             }
 
             .thumbnail {
@@ -72,7 +74,12 @@ import {ResponseHeadingPipe} from "../pipes/response-heading.pipe";
               -webkit-box-orient: vertical;
               font-size: $font-base;
               overflow: hidden;
-              margin-bottom: $spacing-50;
+              margin-bottom: $spacing-100;
+            }
+            
+            .card-btn {
+              margin-top: auto;
+              box-shadow: -3px 3px 0px 0px #ffffff, 0 5px 5px -2px #ffffff;
             }
           }
         `

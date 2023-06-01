@@ -8,30 +8,36 @@ import {Creator} from "../../creators/creators.model";
 import {combineLatest, filter, map, Observable, switchMap} from "rxjs";
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {ResponseHeadingPipe} from "../pipes/response-heading.pipe";
+import {ShareLinkComponent} from "../share-link/share-link.component";
 
 @Component({
     standalone: true,
-    imports: [CommonModule, RouterLink, ResponseHeadingPipe],
+    imports: [CommonModule, RouterLink, ResponseHeadingPipe, ShareLinkComponent],
     template: `
-        <header class="slide-out--header">
-            <h1 class="slide-out--title">Details</h1>
-            <button class="button button-icon" [routerLink]="['/', { outlets: { details : null } }]"
-                    (click)="closeSlideOutPanel()">
-                <i class="material-icons">close</i>
-            </button>
-        </header>
-        <section *ngIf="(response$ | async)[0]  as response" class="slide-out--content">
-            <article class="slide-out--info">
-                <h1> <a [href]="response.urls[0].url" target="_blank">{{response | responseHeading }}</a></h1>
-                <p>{{response.description}}</p>
-                <p *ngIf="response.comics.available">Comics Available: {{response.comics.available}}</p>
-                <p *ngIf="response.series.available"> Series Available: {{response.series.available}}</p>
-                <p *ngIf="response.stories.available"> Stories Available: {{response.series.available}}</p>   
-            </article>
-            <article class="slide-out--image" *ngIf="response.thumbnail">
-                <img [src]="response.thumbnail.path + '.' + response.thumbnail.extension" alt="thumbnail">
-            </article>
-        </section>
+        <ng-container *ngIf="(response$ | async)[0]  as response">
+            <header class="slide-out--header">
+                <h1><a [href]="response.urls[0].url" target="_blank">{{response | responseHeading }}</a></h1>
+                <div class="slide-out--actions">
+                    <app-share-link></app-share-link>
+                    <button class="button button-icon" [routerLink]="['/', { outlets: { details : null } }]"
+                            (click)="closeSlideOutPanel()">
+                        <i class="material-icons">close</i>
+                    </button>
+                </div>
+
+            </header>
+            <section class="slide-out--content">
+                <article class="slide-out--info">
+                    <p>{{response.description}}</p>
+                    <p *ngIf="response.comics?.available">Comics Available: {{response.comics.available}}</p>
+                    <p *ngIf="response.series?.available">Series Available: {{response.series.available}}</p>
+                    <p *ngIf="response.stories?.available">Stories Available: {{response.series.available}}</p>
+                </article>
+                <article class="slide-out--image" *ngIf="response.thumbnail">
+                    <img [src]="response.thumbnail.path + '.' + response.thumbnail.extension" alt="thumbnail">
+                </article>
+            </section>
+        </ng-container>
     `,
     styleUrls: ['./details-slide-out.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush

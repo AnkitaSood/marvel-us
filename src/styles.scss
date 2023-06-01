@@ -6,23 +6,34 @@
   padding: 0;
   box-sizing: border-box;
   color: $color-text-primary;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Bangers', cursive;
+}
+
+body {
+  height: 100%;
+  background: $color-main-background;
 }
 
 h1 {
   font-size: 1.5rem;
   font-weight: bold;
+  font-family: 'Comfortaa', cursive;
+}
+
+P {
+  font-size: $font-size-base;
+  font-family: 'Comfortaa', cursive;
 }
 
 .button {
   display: inline-block;
   border: none;
-  padding: 1rem;
+  padding: $spacing-100;
   margin: 0;
   text-decoration: none;
-  background: #0069ed;
-  color: #ffffff;
-  font-size: 1rem;
+  background: $color-button-background;
+  color: $color-text-primary;
+  font-size: $font-size-button;
   cursor: pointer;
   text-align: center;
   transition: background 250ms ease-in-out,
@@ -31,12 +42,7 @@ h1 {
 
 button:hover,
 button:focus {
-  background: #0053ba;
-}
-
-button:focus {
-  outline: 1px solid #fff;
-  outline-offset: -4px;
+  background: $color-button-background-interactive;
 }
 
 button:active {
@@ -44,6 +50,11 @@ button:active {
 }
 
 .button-icon {
-  border-radius: 2rem;
+  padding: $spacing-50;
+  border-radius: 50%;
+}
+
+.material-icons {
+  vertical-align: middle;
 }
 

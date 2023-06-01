@@ -3,7 +3,6 @@
 :host {
   display: flex;
   flex-direction: column;
-  background: $color-main-background;
 
   .header {
     background-color: $color-background-primary;
@@ -25,7 +24,6 @@
 
     a {
       padding: 0 $spacing-100;
-
       line-height: $font-header-link-line-height;
       text-decoration: none;
       color: $color-text-primary;
@@ -54,6 +52,12 @@
   .main {
     height: 100%;
     display: flex;
+  }
+
+  .footer {
+    padding: $spacing-100;
+    text-align: center;
+    background-color: $color-footer-background;
   }
 
 

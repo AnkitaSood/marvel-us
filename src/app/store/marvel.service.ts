@@ -18,7 +18,7 @@ export class MarvelService {
     }
 
     getCharacters(): Observable<CharacterResponse> {
-        const url = `${this.API_BASE_URL}/characters?modifiedSince=2010-01-01T00%3A00%3A00-0000&orderBy=name%2Cmodified&limit=16&apikey=${this.API_PUBLIC_KEY}`;
+        const url = `${this.API_BASE_URL}/characters?modifiedSince=2010-01-01T00%3A00%3A00-0000&orderBy=name%2Cmodified&limit=20&apikey=${this.API_PUBLIC_KEY}`;
         return new Observable((observer) => {
             fetch(url)
                 .then(response => response.json())
@@ -35,7 +35,7 @@ export class MarvelService {
     }
 
     getComics(): Observable<ComicsResponse> {
-        const url = `${this.API_BASE_URL}/comics?orderBy=title&limit=16&apikey=${this.API_PUBLIC_KEY}`;
+        const url = `${this.API_BASE_URL}/comics?orderBy=title&limit=20&apikey=${this.API_PUBLIC_KEY}`;
 
         return new Observable((observer) => {
             fetch(url)
@@ -52,7 +52,7 @@ export class MarvelService {
     }
 
     getCreators(): Observable<CreatorResponse> {
-        const url = `${this.API_BASE_URL}/creators?limit=16&apikey=${this.API_PUBLIC_KEY}`;
+        const url = `${this.API_BASE_URL}/creators?modifiedSince=2010-01-01T00%3A00%3A00-0000&limit=20&apikey=${this.API_PUBLIC_KEY}`;
 
         return new Observable((observer) => {
             fetch(url)

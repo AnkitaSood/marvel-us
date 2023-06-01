@@ -1,10 +1,10 @@
-<h1 class="page-title"> Total Comics in MCU: {{comics()?.total | number : '':'en'}}.</h1>
+<h1 class="page-title">Comics in MCU: {{comics()?.total | number : '':'en'}}.</h1>
 <app-card [response]="comics()?.results">
     <ng-template #header let-comic>
         <a class='card-link' [routerLink]="['/',{outlets: {details: ['details', 'comics', comic.id]}}]">{{comic.title}}</a>
     </ng-template>
     <ng-template #body
                  let-comic>{{comic.description}}
-        <p *ngFor="let creator of comic.creators.items">Creator name: {{creator.name }} ({{(creator.role)}})</p>
+        <p *ngFor="let creator of comic.creators.items">Creator: {{creator.name }} ({{(creator.role)}})</p>
     </ng-template>
 </app-card>
