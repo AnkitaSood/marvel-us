@@ -72,7 +72,7 @@ import {ResponseHeadingPipe} from "../pipes/response-heading.pipe";
               -webkit-line-clamp: 3;
               display: -webkit-box;
               -webkit-box-orient: vertical;
-              font-size: $font-base;
+              font-size: $font-size-base;
               overflow: hidden;
               margin-bottom: $spacing-100;
             }
