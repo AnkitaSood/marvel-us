@@ -2,13 +2,14 @@
 
 :host {
   display: block;
-  height: 30vh;
-  position: absolute;
+  height: 40vh;
+  position: fixed;
   bottom: 0;
   width: 100%;
   padding: $spacing-100;
-  background-color: rgba(230, 36, 41, 0.8);
+  background-color: rgba(230, 36, 41, 0.95);
   transition: transform 0.3s ease-out;
+  overflow: scroll;
 
   &.slide-in {
 
@@ -21,12 +22,19 @@
     margin-bottom: $spacing-100;
   }
 
+  .slide-out--actions {
+    display: flex;
+    gap: $spacing-50;
+  }
+
   .slide-out--content {
     display: flex;
     justify-content: space-between;
 
     img {
-      width: 300px;
+      width: auto;
+      height: 30vh;
+      object-fit: contain;
     }
   }
 
