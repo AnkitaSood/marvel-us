@@ -15,9 +15,9 @@ import {FavoritesService} from "../../store/favorites.service";
             </button>
         </header>
         
-        <section class="panel-body">
-            <p *ngFor="let fav of favorites()">{{fav}}</p>
-        </section>
+        <ul class="panel-body">
+            <li *ngFor="let fav of favorites()">{{fav}}</li>
+        </ul>
         
     `,
     styles: [
@@ -28,11 +28,25 @@ import {FavoritesService} from "../../store/favorites.service";
             padding: $spacing-100;
             background-color: rgba(230, 36, 41, 0.7);
             flex: 1 0 50%;
+            position: sticky;
+            top: 3.25rem; // height of top navigation
+            height: 100dvh;
 
             .panel-header {
               display: flex;
-              align-items: center;
+              align-items: flex-start;
               justify-content: space-between;
+            }
+            
+            h1 {
+              font-family: 'Bangers', cursive;
+              font-size: 2.5rem;
+              margin-block-end: 1em;
+            }
+            
+            .panel-body li {
+              font-family: 'Comfortaa', cursive;
+              
             }
           }
         `

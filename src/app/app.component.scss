@@ -1,11 +1,12 @@
 @use 'tokens' as *;
 
 :host {
-  display: flex;
-  flex-direction: column;
+  display: block;
 
   .header {
     background-color: $color-background-primary;
+    position: sticky;
+    top: 0;
   }
 
   .nav__links {
@@ -52,6 +53,7 @@
   .main {
     height: 100%;
     display: flex;
+    align-items: flex-start;
   }
 
   .footer {
