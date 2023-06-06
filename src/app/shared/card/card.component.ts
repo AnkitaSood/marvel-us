@@ -8,13 +8,13 @@ import {FavoritesService} from "../../store/favorites.service";
 import {ResponseHeadingPipe} from "../pipes/response-heading.pipe";
 
 @Component({
-    selector: 'app-card',
+    selector: 'app-cards',
     standalone: true,
     imports: [CommonModule, ResponseHeadingPipe],
     host: {class: 'layout-cards'},
     template: `
         <ng-container *ngIf="response">
-            <article class="card" *ngFor="let data  of response">
+            <article class="card" *ngFor="let data  of response; trackBy: response.id">
                 <img class="thumbnail" [src]="data.thumbnail.path + '.' + data.thumbnail.extension" alt="thumbnail">
                 <h3 class="card-title">
                     <ng-container

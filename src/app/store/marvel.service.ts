@@ -1,4 +1,3 @@
-// import { MD5 } from 'crypto-js';
 import {Injectable} from '@angular/core';
 import {appConfig} from "../../config";
 import {Observable} from "rxjs";
@@ -18,7 +17,7 @@ export class MarvelService {
     }
 
     getCharacters(): Observable<CharacterResponse> {
-        const url = `${this.API_BASE_URL}/characters?modifiedSince=2010-01-01T00%3A00%3A00-0000&orderBy=name%2Cmodified&limit=20&apikey=${this.API_PUBLIC_KEY}`;
+        const url = `${this.API_BASE_URL}/characters?nameStartsWith=spider&orderBy=-name&apikey=${this.API_PUBLIC_KEY}`;
         return new Observable((observer) => {
             fetch(url)
                 .then(response => response.json())
@@ -35,7 +34,7 @@ export class MarvelService {
     }
 
     getComics(): Observable<ComicsResponse> {
-        const url = `${this.API_BASE_URL}/comics?orderBy=title&limit=20&apikey=${this.API_PUBLIC_KEY}`;
+        const url = `${this.API_BASE_URL}/comics?titleStartsWith=spider&&apikey=${this.API_PUBLIC_KEY}`;
 
         return new Observable((observer) => {
             fetch(url)
@@ -52,7 +51,7 @@ export class MarvelService {
     }
 
     getCreators(): Observable<CreatorResponse> {
-        const url = `${this.API_BASE_URL}/creators?modifiedSince=2010-01-01T00%3A00%3A00-0000&limit=20&apikey=${this.API_PUBLIC_KEY}`;
+        const url = `${this.API_BASE_URL}/creators?comics=21839%2C%2098392%2C%20108352%2C%20107476%2C%20%20108351%2C%2099751%2C%20106158%2C%20107477%2C%20106157%2C102817&apikey=${this.API_PUBLIC_KEY}`;
 
         return new Observable((observer) => {
             fetch(url)

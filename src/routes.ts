@@ -1,4 +1,4 @@
-import {Route, withComponentInputBinding} from "@angular/router";
+import {Route} from "@angular/router";
 import {CharactersComponent} from "./app/characters/characters.component";
 import {ComicsComponent} from "./app/comics/comics.component";
 import {CreatorsComponent} from "./app/creators/creators.component";

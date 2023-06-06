@@ -1,11 +1,11 @@
-<h1 class="page-title">Characters in MCU modified since 2010: {{characters()?.total | number : '':'en'}}.</h1>
-<app-card [response]="characters()?.results">
+<h1 class="page-title">Spidey themed characters in MCU: {{characters()?.total | number : '':'en'}}.</h1>
+<app-cards [response]="characters()?.results">
     <ng-template #header let-character>
         <a [routerLink]="['/',{outlets: {details: ['details', 'characters', character.id]}}]">{{character.name}}</a>
     </ng-template>
     <ng-template #body
                  let-character>{{character.description === "" ? "Comics available: " + character.comics.available : character.description}}
     </ng-template>
-</app-card>
+</app-cards>
 
 

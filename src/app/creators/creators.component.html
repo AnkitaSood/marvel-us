@@ -1,12 +1,12 @@
-<h1 class="page-title">Creators associated with MCU: {{creators()?.total| number : '':'en'}}. </h1>
-<app-card [response]="creators()?.results">
+<h1 class="page-title">Creators of Spider-man themed comics: {{creators()?.total| number : '':'en'}}. </h1>
+<app-cards [response]="creators()?.results">
     <ng-template #header let-creator>
         <a class='card-link'
            [routerLink]="['/',{outlets: {details: ['details', 'creators', creator.id]}}]"> {{creator.fullName}}</a>
     </ng-template>
     <ng-template #body let-creator>
-        <p *ngFor="let comic of creator.comics.items.slice(0,3)">
-            Comic: {{comic.name}}
+        <p *ngFor="let comic of creator.comics.items.slice(0,3); index as i;" >
+            Comic #{{i}}: {{comic.name}}
         </p>
     </ng-template>
-</app-card>
+</app-cards>
