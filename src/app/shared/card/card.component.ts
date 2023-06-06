@@ -6,6 +6,7 @@ import {Character} from "../../characters/characters.model";
 import {Creator} from "../../creators/creators.model";
 import {FavoritesService} from "../../store/favorites.service";
 import {ResponseHeadingPipe} from "../pipes/response-heading.pipe";
+import {Thumbnail} from "../models/common.model";
 
 @Component({
     selector: 'app-cards',
@@ -25,7 +26,7 @@ import {ResponseHeadingPipe} from "../pipes/response-heading.pipe";
                             *ngTemplateOutlet="body || defaultBodyTmpl; context: {$implicit: data}"></ng-container>
                 </p>
                 <ng-container *ngIf="(data | responseHeading) as name">
-                    <button type="button" class="button card-btn" (click)="openFavPanel(name)">Add to Favorites
+                    <button type="button" class="button card-btn" (click)="openFavPanel(name, data.thumbnail)">Add to Favorites
                     </button>
                 </ng-container>
             </article>
@@ -95,8 +96,8 @@ export class CardComponent {
     constructor(private readonly router: Router) {
     }
 
-    openFavPanel(name: string) {
-        this.favoriteService.updateFavorites(name);
+    openFavPanel(name: string, thumbnail: Thumbnail) {
+        this.favoriteService.updateFavorites(name, thumbnail);
         this.router.navigate([{outlets: {favorites: ['my-favorites']}}], {skipLocationChange: true});
     }
 }

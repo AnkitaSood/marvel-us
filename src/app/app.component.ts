@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 
 @Component({
@@ -12,4 +12,7 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
         RouterLinkActive
     ],
 })
-export class AppComponent  {}
+export class AppComponent  {
+@ViewChild('header') primaryHeader! : ElementRef<HTMLHtmlElement>;
+    constructor(private renderer: Renderer2) {}
+}

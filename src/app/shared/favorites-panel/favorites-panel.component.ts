@@ -2,11 +2,11 @@ import {Component, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import { RouterLink} from "@angular/router";
 import {FavoritesService} from "../../store/favorites.service";
-
+import {CdkDrag, CdkDragDrop, CdkDragPreview, CdkDropList, moveItemInArray} from "@angular/cdk/drag-drop";
 
 @Component({
     standalone: true,
-    imports: [CommonModule, RouterLink],
+    imports: [CommonModule, RouterLink, CdkDrag, CdkDropList, CdkDragPreview],
     template: `
         <header class="panel-header">
             <h1> My Favorites</h1>
@@ -14,11 +14,12 @@ import {FavoritesService} from "../../store/favorites.service";
                 <i class="material-icons">close</i>
             </button>
         </header>
-        
-        <ul class="panel-body">
-            <li *ngFor="let fav of favorites()">{{fav}}</li>
-        </ul>
-        
+        <ul cdkDropList (cdkDropListDropped)="drop($event)" class="panel-body">
+            <li *ngFor="let fav of favorites()" cdkDrag>
+                {{fav.name}}
+                <img *cdkDragPreview [src]="fav.thumbnail.path+ '.' + fav.thumbnail.extension" [alt]="fav.name">
+            </li>
+        </ul>        
     `,
     styles: [
         `
@@ -40,13 +41,21 @@ import {FavoritesService} from "../../store/favorites.service";
             
             h1 {
               font-family: 'Bangers', cursive;
-              font-size: 2.5rem;
-              margin-block-end: 1em;
+              font-size: 4rem;
+              margin-block-end: 0.5em;
             }
             
-            .panel-body li {
+            .panel-body li{
               font-family: 'Comfortaa', cursive;
+              list-style-type: none;
+              font-size: 1.5rem;
+              margin-bottom:1rem;
               
+              &:before {
+                font-family: 'Material Icons';
+                content: 'electric_bolt';
+                color: $color-text-secondary;
+              }
             }
           }
         `
@@ -56,9 +65,10 @@ export class FavoritesPanelComponent {
     favoriteService = inject(FavoritesService);
     favorites = this.favoriteService.favorites;
 
-    constructor() {
+    constructor() {}
 
-
-}
+    drop(event: CdkDragDrop<{title: string; poster: string}[]>) {
+        moveItemInArray(this.favorites(), event.previousIndex, event.currentIndex);
+    }
 
 }
