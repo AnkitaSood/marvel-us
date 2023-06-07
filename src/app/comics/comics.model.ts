@@ -20,22 +20,38 @@ export type Comic = {
         },
     ];
     thumbnail: Thumbnail;
-    creators: {
-        "available": number;
-        "collectionURI": string;
-        "items": [
-            {
-                "resourceURI": string;
-                "name": string;
-                role: string;
-            }
-        ],
-    };
-    characters: {
-        available: number
-    };
-    stories: {
+    comics?: {
         available: number;
+        collectionURI: string;
+        items: {
+            resourceURI: string;
+            name: string;
+        }[];
+    };
+    series?: {
+        available: number;
+        collectionURI: string;
+        items: {
+            resourceURI: string;
+            name: string;
+        }[];
+    };
+    stories?: {
+        available: number;
+        collectionURI: string;
+        items: {
+            resourceURI: string;
+            name: string;
+            type: string;
+        }[];
+    };
+    events?: {
+        available: number;
+        collectionURI: string;
+        items: {
+            resourceURI: string;
+            name: string;
+        }[];
     };
     urls: {
         type: string;

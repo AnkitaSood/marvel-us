@@ -8,7 +8,7 @@ import { Clipboard } from '@angular/cdk/clipboard';
   standalone: true,
   imports: [CommonModule, ClipboardModule],
   template: `
-    <button type="button" class="button button-icon" (click)="copyToClipboard()">
+    <button type="button" class="button button-icon" title="share link" (click)="copyToClipboard()">
       <i class="material-icons">share</i>
     </button>
   `,

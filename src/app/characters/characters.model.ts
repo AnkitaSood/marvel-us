@@ -14,8 +14,38 @@ export type Character = {
     name: string;
     description: string;
     thumbnail: Thumbnail;
-    comics: {
+    comics?: {
         available: number;
+        collectionURI: string;
+        items: {
+            resourceURI: string;
+            name: string;
+        }[];
+    };
+    series?: {
+        available: number;
+        collectionURI: string;
+        items: {
+            resourceURI: string;
+            name: string;
+        }[];
+    };
+    stories?: {
+        available: number;
+        collectionURI: string;
+        items: {
+            resourceURI: string;
+            name: string;
+            type: string;
+        }[];
+    };
+    events?: {
+        available: number;
+        collectionURI: string;
+        items: {
+            resourceURI: string;
+            name: string;
+        }[];
     };
     urls: {
         type: string;

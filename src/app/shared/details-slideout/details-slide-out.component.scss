@@ -7,7 +7,7 @@
   bottom: 0;
   width: 100%;
   padding: $spacing-100;
-  background-color: rgba(230, 36, 41, 0.95);
+  background-color: $color-slideout-bkg;
   transition: transform 0.3s ease-out;
   overflow: scroll;
 
@@ -22,6 +22,10 @@
     margin-bottom: $spacing-100;
   }
 
+  .slide-out--title {
+    font-size: $font-size-slideout-title;
+  }
+
   .slide-out--actions {
     display: flex;
     gap: $spacing-50;
@@ -30,17 +34,40 @@
   .slide-out--content {
     display: flex;
     justify-content: space-between;
+    gap: $spacing-100;
+  }
 
-    img {
-      width: auto;
-      height: 30vh;
-      object-fit: contain;
-    }
+
+  .slide-out--image {
+    width: auto;
+    height: 30vh;
+    object-fit: contain;
   }
 
   .slide-out--info {
     display: flex;
     flex-direction: column;
     gap: $spacing-50;
+
+    > p {
+      font-size: 1.5rem;
+    }
+
+    .slide-out--links-container {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .slide-out--link {
+      font-size: 1.25rem;
+      font-family: 'Comfortaa', cursive;
+      text-transform: capitalize;
+
+      &:not(.slide-out--link-last) {
+        border-right: 1px solid;
+        padding-right: 0.25rem;
+      }
+
+    }
   }
 }
