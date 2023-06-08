@@ -38,23 +38,29 @@ import {CdkDrag, CdkDragDrop, CdkDragPreview, CdkDropList, moveItemInArray} from
               align-items: flex-start;
               justify-content: space-between;
             }
-            
+
             h1 {
               font-family: 'Bangers', cursive;
               font-size: 4rem;
               margin-block-end: 0.5em;
             }
-            
-            .panel-body li{
+
+            .panel-body li {
               font-family: 'Comfortaa', cursive;
               list-style-type: none;
               font-size: 1.5rem;
-              margin-bottom:1rem;
-              
+              margin-bottom: 1rem;
+
+              &:hover {
+                cursor: pointer;
+                text-shadow: $color-text-secondary 0.0625rem 0 0.625rem;
+              }
+
               &:before {
                 font-family: 'Material Icons';
                 content: 'electric_bolt';
                 color: $color-text-secondary;
+                vertical-align: middle;
               }
             }
           }
