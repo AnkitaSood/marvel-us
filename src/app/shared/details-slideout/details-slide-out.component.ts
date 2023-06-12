@@ -1,10 +1,13 @@
 import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MarvelService} from "../../store/marvel.service";
-import { filter, map, switchMap} from "rxjs";
+import { filter, map, Observable, switchMap} from "rxjs";
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {ResponseHeadingPipe} from "../pipes/response-heading.pipe";
 import {ShareLinkComponent} from "../share-link/share-link.component";
+import {Character} from "../../characters/characters.model";
+import {Comic} from "../../comics/comics.model";
+import {Creator} from "../../creators/creators.model";
 
 @Component({
     standalone: true,
@@ -57,7 +60,7 @@ export class DetailsSlideOutComponent {
     constructor(private route: ActivatedRoute) {
     }
 
-    response$ = this.route.params.pipe(
+    response$: Observable<Character | Comic | Creator> = this.route.params.pipe(
         map((params) => {
             return {
                 id: params['id'],
