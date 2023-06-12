@@ -67,6 +67,7 @@ import {Thumbnail} from "../models/common.model";
             .card-title {
               font-size: $font-header-card;
               margin-bottom: $spacing-50;
+              letter-spacing: 0.09375rem;
             }
             
             .card-body {

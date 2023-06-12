@@ -1,18 +1,23 @@
 @use 'tokens' as *;
 
+@keyframes smooth-appear {
+  to {
+    bottom: 0;
+  }
+}
+
+
 :host {
-  display: block;
-  height: 40vh;
   position: fixed;
-  bottom: 0;
+  bottom: -100%;
   width: 100%;
   padding: $spacing-100;
   background-color: $color-slideout-bkg;
-  transition: transform 0.3s ease-out;
+  height: 40dvh;
   overflow: scroll;
 
   &.slide-in {
-
+    animation: smooth-appear 1s ease forwards;
   }
 
   .slide-out--header {
@@ -24,6 +29,7 @@
 
   .slide-out--title {
     font-size: $font-size-slideout-title;
+    letter-spacing: 0.09375rem;
   }
 
   .slide-out--actions {

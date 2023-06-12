@@ -36,8 +36,7 @@ p {
   font-size: $font-size-button;
   cursor: pointer;
   text-align: center;
-  transition: background 250ms ease-in-out,
-  transform 150ms ease;
+  transition: background 250ms ease-in-out;
 }
 
 button:hover,
@@ -45,13 +44,17 @@ button:focus {
   background: $color-button-background-interactive;
 }
 
-button:active {
-  transform: scale(0.99);
-}
-
 .button-icon {
+  background: $color-icon-btn-background;
   padding: $spacing-50;
   border-radius: 50%;
+  outline: 0.0625rem solid;
+  transition: transform 150ms ease;
+
+  &:hover, &:focus, &:active {
+    transform: scale(1.01);
+    background: $color-icon-btn-background-interactive;
+  }
 }
 
 .material-icons {

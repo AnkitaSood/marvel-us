@@ -12,7 +12,7 @@
   .nav__links {
     list-style: none;
     display: flex;
-    height: $size-nav-height;
+    height: $size-top-nav-height;
     gap: $spacing-100;
 
     li {
@@ -54,7 +54,7 @@
     height: 100%;
     display: flex;
     align-items: flex-start;
-    min-height: calc( 100dvh - ($size-nav-height + $size-footer-height));
+    min-height: calc( 100dvh - ($size-top-nav-height + $size-footer-height));
   }
 
   .footer {

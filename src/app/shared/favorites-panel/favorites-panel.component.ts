@@ -30,8 +30,9 @@ import {CdkDrag, CdkDragDrop, CdkDragPreview, CdkDropList, moveItemInArray} from
             background-color: rgba(230, 36, 41, 0.7);
             flex: 1 0 50%;
             position: sticky;
-            top: 3.25rem; // height of top navigation
+            top: $size-top-nav-height;
             height: 100dvh;
+            left: 0;
 
             .panel-header {
               display: flex;

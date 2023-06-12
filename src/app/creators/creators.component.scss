@@ -3,6 +3,7 @@
 :host {
   display: block;
   padding: $spacing-100;
+  min-width: 50%;
 
   .page-title {
     margin-bottom: $spacing-100;
