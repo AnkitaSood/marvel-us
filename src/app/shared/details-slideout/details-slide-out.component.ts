@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MarvelService} from "../../store/marvel.service";
-import {combineLatest, filter, map, switchMap} from "rxjs";
+import { filter, map, switchMap} from "rxjs";
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {ResponseHeadingPipe} from "../pipes/response-heading.pipe";
 import {ShareLinkComponent} from "../share-link/share-link.component";
