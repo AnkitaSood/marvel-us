@@ -54,17 +54,23 @@ import {ShareLinkComponent} from "../share-link/share-link.component";
 export class DetailsSlideOutComponent {
     private marvelService = inject(MarvelService);
 
-    id$ = this.route.params.pipe(map((params) => params['id']));
-    type$ = this.route.params.pipe(map((params) => params['type']));
-
     constructor(private route: ActivatedRoute) {
     }
 
-    response$ = combineLatest([
-        this.type$.pipe(filter(t => t !== null)),
-        this.id$.pipe(filter(i => i !== null))]).pipe(
-        switchMap(([type, id]) => this.marvelService.getDetails(type, id))
-    ).pipe(filter(response => !!response))
+    response$ = this.route.params.pipe(
+        map((params) => {
+            return {
+                id: params['id'],
+                type: params['type']
+            }
+        }),
+        filter(({ id, type }) => !!id && !!type),
+        switchMap(({ id, type }) => {
+            return this.marvelService.getDetails(type, id).pipe(
+                filter(response => !!response)
+            )
+        })
+    )
 
     @HostBinding('class.slide-in') slideIn = true;
     closeSlideOutPanel() {
